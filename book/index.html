@@ -136,7 +136,7 @@ h1{font-size:30px;line-height:1.12;letter-spacing:-.025em;margin:14px 0 6px}
  <!-- 0 eligibility -->
  <section class="step" data-s="0">
   <h1>Book your driving lesson.</h1>
-  <p class="lead">One-on-one coaching at your location. Takes about a minute, no payment needed now.</p>
+  <p class="lead">One-on-one coaching at your location. Takes about a minute. No payment needed to book.</p>
   <div class="trust"><span>Experienced instructor</span><span>We come to you</span><span>Your car or ours</span></div>
   <p style="font-weight:600;margin:20px 0 10px">Do you have a Driver’s License or PDC Certificate (Code B)?</p>
   <div id="lic"></div>
@@ -171,6 +171,7 @@ h1{font-size:30px;line-height:1.12;letter-spacing:-.025em;margin:14px 0 6px}
   <p class="lead">So Coach Wel can confirm your schedule.</p>
   <div class="f" id="f-name"><label for="name">Full name</label><input id="name" autocomplete="name" placeholder="Juan Dela Cruz" enterkeyhint="next"></div>
   <div class="f" id="f-phone"><label for="phone">Mobile number</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0917 123 4567" enterkeyhint="next"><div class="hint">We’ll text or call to confirm. Viber &amp; WhatsApp OK.</div></div>
+  <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label>Company<input id="hp" tabindex="-1" autocomplete="off"></label></div>
   <div class="f" id="f-addr"><label for="addr">Pickup address</label><input id="addr" autocomplete="street-address" placeholder="House no., street, barangay" enterkeyhint="done"></div>
   <p style="font-weight:600;margin:20px 0 8px 4px;font-size:14px">Is the pickup point along the highway or a main road?</p>
   <div class="seg" id="road"></div>
@@ -190,7 +191,7 @@ h1{font-size:30px;line-height:1.12;letter-spacing:-.025em;margin:14px 0 6px}
  <section class="step" data-s="6">
   <div class="done">
    <div class="big">✓</div>
-   <h1 id="dh">You’re booked in!</h1>
+   <h1 id="dh">Request received!</h1>
    <p class="lead" id="dp"></p>
    <div id="dcta"></div>
   </div>
@@ -398,7 +399,7 @@ const fd=k=>new Date(k+'T00:00').toLocaleDateString('en-US',{weekday:'short',mon
 const fdl=k=>new Date(k+'T00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
 const t12=t=>{const[h,m]=t.split(':').map(Number);return((h+11)%12+1)+(m?':'+String(m).padStart(2,'0'):'')+(h<12?' AM':' PM')};
 const hrs=p=>{const f=t=>{const[h,m]=t.split(':').map(Number);return h+m/60};return f(p.et)-f(p.st)};
-const today=key(new Date()),bk=new Set(CFG.booked);
+const today=key(new Date()),bk=new Set(CFG.booked),T0=Date.now();
 const fromFB=/FBAN|FBAV|FB_IAB|Instagram/i.test(navigator.userAgent)||/facebook\.com|fb\.me/i.test(document.referrer)||new URLSearchParams(location.search).has('fb');
 
 const S={step:0,lic:null,loc:null,pi:null,date:null,name:'',phone:'',addr:'',road:null,veh:false};
@@ -475,7 +476,7 @@ function rReview(){
   (c.veh?`<div class="r"><span>Training vehicle (${p.days} × ${money(c.vr)})</span><b>${money(c.veh)}</b></div>`:'')+
   (c.acc?`<div class="r"><span>Interior location fee (${p.days} × ${money(ROAD_FEE)})</span><b>${money(c.acc)}</b></div>`:'')+
   `<div class="r tot"><span>Total</span><b>${money(c.tot)}</b></div><div class="r dep"><span>Reservation deposit</span><b>${money(c.dep)}</b></div><div class="r"><span>Balance on lesson day</span><b>${money(c.bal)}</b></div>`;
- $('#paynote').innerHTML=CFG.gcash?`<b>Secure your slot:</b> send the ${money(c.dep)} deposit via GCash to <b>${esc(CFG.gcash)}</b>${CFG.gcashName?' ('+esc(CFG.gcashName)+')':''} after booking.`:`<b>No payment now.</b> Coach Wel will message you to confirm and send details for the ${money(c.dep)} reservation deposit. Your slot is reserved once it’s paid.`;
+ $('#paynote').innerHTML=`<b>No payment needed to book.</b><br>📞 Coach Wel will call or text you <b>within 1 hour</b> to confirm your booking (8 AM – 8 PM daily; requests after 8 PM are answered the next morning).<br>Once approved, you’ll receive the ${money(c.dep)} reservation deposit details to secure your slot.`;
 }
 
 // ---------- flow ----------
@@ -534,12 +535,12 @@ function submit(){
   'Program: '+p.name+' ('+p.tag+')','Schedule: '+range()+', '+t12(p.st)+' – '+t12(p.et)+(p.days>1?' daily':''),
   'Location: '+town(),'Pickup address: '+S.addr.trim(),'Road access: '+(S.road==='interior'?'Interior / off-highway':'Along the highway / main road'),'Vehicle: '+(S.veh?'Training vehicle':'Own vehicle'),'',
   'Program fee: '+money(p.price),c.veh?'Training vehicle: '+money(c.veh):null,c.acc?'Interior location fee: '+money(c.acc):null,
-  'Total: '+money(c.tot),'Reservation deposit: '+money(c.dep)+' (payment details to be sent)','Balance due on lesson day: '+money(c.bal),'',
+  'Total: '+money(c.tot),'Reservation deposit: '+money(c.dep)+' (send after you approve)','Balance due on lesson day: '+money(c.bal),'',
   'Booked via: '+(fromFB?'Facebook link':'weldrive.ph')].filter(x=>x!==null).join('\n');
- const url=CFG.script+'?'+new URLSearchParams({name:S.name.trim(),phone:S.phone.trim(),town:town(),start:S.date,days:p.days,st:p.st,et:p.et,addr:S.addr.trim(),message:m});
+ const url=CFG.script+'?'+new URLSearchParams({name:S.name.trim(),phone:S.phone.trim(),town:town(),start:S.date,days:p.days,st:p.st,et:p.et,addr:S.addr.trim(),message:m,hp:$('#hp').value,t:Date.now()-T0});
  const done=()=>{
-  $('#dh').textContent='You’re booked in, '+S.name.trim().split(' ')[0]+'!';
-  $('#dp').innerHTML=`${esc(p.name)} · ${range()}<br>${t12(p.st)} at ${esc(town())}<br><br>Coach Wel will contact you at <b>${esc(S.phone.trim())}</b> to confirm and send the ${money(c.dep)} deposit details.`;
+  $('#dh').textContent='Request received, '+S.name.trim().split(' ')[0]+'!';
+  $('#dp').innerHTML=`${esc(p.name)} · ${range()}<br>${t12(p.st)} at ${esc(town())}<br><br>📞 Coach Wel will call or text <b>${esc(S.phone.trim())}</b> within 1 hour to confirm (8 AM – 8 PM; after 8 PM, the next morning). Please keep your phone nearby.`;
   if(fromFB){let n=5;$('#dcta').innerHTML=`<p class="fine" style="font-size:14px">Returning to Facebook in <b id="cd">5</b>…</p><a class="btnl" href="${CFG.facebook}">Back to Facebook now</a>`;
    const t=setInterval(()=>{n--;const el=$('#cd');if(el)el.textContent=n;if(n<=0){clearInterval(t);location.href=CFG.facebook}},1000)}
   else $('#dcta').innerHTML=`<a class="btnl" href="/">Back to home</a><br><a class="btnl s" href="${CFG.facebook}" style="margin-top:10px">Follow us on Facebook</a>`;
