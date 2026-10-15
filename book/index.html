@@ -1,9 +1,552 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Book a Lesson · WelDrive PH</title>
+<meta name="description" content="Book a private driving lesson with Coach Wel in about a minute.">
 <meta property="og:title" content="Book a driving lesson with Coach Wel">
 <meta property="og:description" content="Pick your location, program and date. Takes about a minute.">
-<meta http-equiv="refresh" content="0;url=/?fb=1#book">
-<script>location.replace("/?fb=1#book")</script>
-</head><body><p><a href="/?fb=1#book">Book a lesson</a></p></body></html>
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230071e3'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' fill='white' text-anchor='middle'%3EWD%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#f5f5f7;--card:#fff;--ink:#1d1d1f;--mut:#6e6e73;--line:#e3e3e8;--fill:#f2f2f7;--acc:#0071e3;--acch:#0062c4;--soft:#e8f2fd;--ok:#1f9d55;--okbg:#e8f7ee;--warn:#d70015;--warnbg:#fff1f1;--sh:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--card:#1c1c1e;--ink:#f5f5f7;--mut:#98989d;--line:#38383a;--fill:#2c2c2e;--acc:#0a84ff;--acch:#409cff;--soft:#0a2540;--ok:#30d158;--okbg:#0f2a19;--warn:#ff453a;--warnbg:#2c1515;--sh:none}}
+:root[data-theme="dark"]{--bg:#000;--card:#1c1c1e;--ink:#f5f5f7;--mut:#98989d;--line:#38383a;--fill:#2c2c2e;--acc:#0a84ff;--acch:#409cff;--soft:#0a2540;--ok:#30d158;--okbg:#0f2a19;--warn:#ff453a;--warnbg:#2c1515;--sh:none}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:17px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.01em;padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:var(--acc)}
+.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px}
+.topin{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.back{width:36px;height:36px;border-radius:50%;background:var(--fill);color:var(--acc);font-size:22px;line-height:1;flex:none;display:flex;align-items:center;justify-content:center}
+.back[hidden]{visibility:hidden;display:flex}
+.brand{flex:1;min-width:0}
+.brand b{display:block;font-size:15px}
+.brand span{font-size:12px;color:var(--mut)}
+.stepn{font-size:13px;color:var(--mut);white-space:nowrap}
+.prog{max-width:560px;margin:10px auto 0;height:4px;border-radius:4px;background:var(--line);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--acc);border-radius:4px;transition:width .35s ease}
+main{max-width:560px;margin:0 auto;padding:8px 16px 0}
+.step{display:none;animation:in .28s ease}
+.step.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h1{font-size:30px;line-height:1.12;letter-spacing:-.025em;margin:14px 0 6px}
+.lead{color:var(--mut);margin:0 0 20px;font-size:16px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border-radius:16px;padding:16px;margin-bottom:10px;box-shadow:var(--sh);border:2px solid transparent;transition:border-color .15s,transform .1s}
+.opt:active{transform:scale(.985)}
+.opt.on{border-color:var(--acc)}
+.opt .ic{width:44px;height:44px;border-radius:12px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:22px;flex:none}
+.opt .tx{flex:1;min-width:0}
+.opt .tx b{display:block;font-size:17px;font-weight:600}
+.opt .tx small{display:block;color:var(--mut);font-size:14px;margin-top:1px}
+.opt .pr{text-align:right;font-weight:700;font-size:18px;white-space:nowrap}
+.opt .pr small{display:block;font-weight:400;font-size:12px;color:var(--mut)}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:#fff;background:var(--acc);border-radius:6px;padding:2px 7px;margin-left:6px;vertical-align:2px}
+.badge.g{background:var(--ok)}
+.chk{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);flex:none}
+.opt.on .chk{border-color:var(--acc);background:var(--acc) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23fff' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.search{position:relative;margin-bottom:12px}
+.search input{width:100%;padding:15px 16px 15px 46px;border:0;border-radius:14px;background:var(--card);box-shadow:var(--sh);font:inherit;font-size:17px;color:var(--ink);outline:none}
+.search input:focus{box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 35%,transparent)}
+.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--mut)}
+.list{background:var(--card);border-radius:16px;box-shadow:var(--sh);overflow:hidden}
+.grp{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);padding:14px 16px 6px;background:var(--fill)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;padding:14px 16px;border-top:.5px solid var(--line);font-size:16px}
+.grp+.row{border-top:0}
+.row small{color:var(--mut);font-size:13px;white-space:nowrap}
+.row.on{background:var(--soft);font-weight:600}
+.row:active{background:var(--fill)}
+.empty{padding:22px 16px;color:var(--mut);text-align:center;font-size:15px}
+.more{display:block;width:100%;padding:14px;color:var(--acc);font-weight:500;text-align:center}
+.notice{border-radius:16px;padding:16px;font-size:15px;line-height:1.5;margin-top:14px}
+.notice.w{background:var(--warnbg)}
+.notice.i{background:var(--soft)}
+.cal-h{display:flex;align-items:center;justify-content:space-between;margin:4px 0 12px}
+.cal-h b{font-size:19px}
+.cal-h button{width:38px;height:38px;border-radius:50%;background:var(--card);box-shadow:var(--sh);color:var(--acc);font-size:22px}
+.cal-h button:disabled{opacity:.35}
+.cal{background:var(--card);border-radius:18px;box-shadow:var(--sh);padding:12px}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.wd{text-align:center;font-size:12px;font-weight:600;color:var(--mut);padding:4px 0 8px}
+.d{aspect-ratio:1;border-radius:50%;font-size:17px;font-weight:500;position:relative}
+.d:disabled{color:var(--mut);opacity:.3;cursor:default}
+.d.tdy::after{content:"";position:absolute;left:50%;bottom:5px;width:4px;height:4px;border-radius:50%;background:var(--acc);transform:translateX(-50%)}
+.d.rng{background:var(--soft);color:var(--acc);border-radius:10px}
+.d.sel{background:var(--acc);color:#fff;font-weight:700}
+.picked{margin-top:14px;background:var(--card);border-radius:16px;box-shadow:var(--sh);padding:14px 16px;display:flex;gap:12px;align-items:center}
+.picked .ic{font-size:22px}
+.picked b{display:block}
+.picked span{color:var(--mut);font-size:14px}
+.f{margin-bottom:14px}
+.f label{display:block;font-size:14px;font-weight:600;margin:0 0 6px 4px}
+.f input{width:100%;padding:15px 16px;border:0;border-radius:14px;background:var(--card);box-shadow:var(--sh);font:inherit;font-size:17px;color:var(--ink);outline:none}
+.f input:focus{box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 35%,transparent)}
+.f .hint{font-size:13px;color:var(--mut);margin:6px 0 0 4px}
+.f.bad input{box-shadow:0 0 0 2px var(--warn)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg .opt{margin:0;padding:14px;display:block}
+.seg .opt b{display:block;font-size:16px}
+.seg .opt small{display:block;color:var(--mut);font-size:13px}
+.tog{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:16px;box-shadow:var(--sh);padding:16px;width:100%;text-align:left}
+.tog .tx{flex:1}
+.tog .tx b{display:block;font-size:16px}
+.tog .tx small{color:var(--mut);font-size:13px}
+.sw{width:51px;height:31px;border-radius:31px;background:var(--line);position:relative;flex:none;transition:background .2s}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:left .2s}
+.tog.on .sw{background:var(--ok)}
+.tog.on .sw::after{left:22px}
+.sum{background:var(--card);border-radius:18px;box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
+.sum .r{display:flex;justify-content:space-between;gap:12px;padding:13px 16px;border-top:.5px solid var(--line);font-size:15px}
+.sum .r:first-child{border-top:0}
+.sum .r span{color:var(--mut)}
+.sum .r b{text-align:right;font-weight:600}
+.sum .r .ed{color:var(--acc);font-size:14px;font-weight:500;margin-left:8px}
+.sum .tot{font-size:19px;background:var(--fill)}
+.sum .tot span{color:var(--ink);font-weight:600}
+.sum .dep b,.sum .dep span{color:var(--acc)}
+.trust{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--mut);font-size:13px;margin:4px 0 6px}
+.trust span::before{content:"✓ ";color:var(--ok);font-weight:700}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:10;background:color-mix(in srgb,var(--card) 92%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:.5px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
+.barin{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.tt{flex:1;min-width:0}
+.tt small{display:block;font-size:12px;color:var(--mut)}
+.tt b{font-size:20px;letter-spacing:-.02em}
+.go{flex:none;min-width:150px;padding:16px 24px;border-radius:980px;background:var(--acc);color:#fff;font-weight:600;font-size:17px;transition:background .15s,opacity .15s}
+.go:hover{background:var(--acch)}
+.go:disabled{opacity:.35;cursor:default}
+.go.full{flex:1}
+.msg{color:var(--warn);font-size:14px;text-align:center;min-height:20px;margin:6px 0 0}
+.done{text-align:center;padding:40px 8px 20px}
+.done .big{width:84px;height:84px;border-radius:50%;background:var(--okbg);color:var(--ok);font-size:44px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.done h1{margin-top:0}
+.btnl{display:inline-block;padding:15px 26px;border-radius:980px;background:var(--acc);color:#fff;text-decoration:none;font-weight:600;margin-top:10px}
+.btnl.s{background:var(--fill);color:var(--acc)}
+.fine{font-size:12px;color:var(--mut);text-align:center;margin:18px 0 0;line-height:1.5}
+</style></head>
+<body>
+<header class="top">
+ <div class="topin">
+  <button class="back" id="back" aria-label="Back" hidden>‹</button>
+  <div class="brand"><b>WelDrive PH</b><span>Coach Wel · 935K+ followers</span></div>
+  <div class="stepn" id="stepn"></div>
+ </div>
+ <div class="prog"><i id="prog"></i></div>
+</header>
+<main>
+ <!-- 0 eligibility -->
+ <section class="step" data-s="0">
+  <h1>Book your driving lesson.</h1>
+  <p class="lead">One-on-one coaching at your location. Takes about a minute, no payment needed now.</p>
+  <div class="trust"><span>Experienced instructor</span><span>We come to you</span><span>Your car or ours</span></div>
+  <p style="font-weight:600;margin:20px 0 10px">Do you have a Driver’s License or PDC Certificate (Code B)?</p>
+  <div id="lic"></div>
+  <div id="licmsg"></div>
+ </section>
+ <!-- 1 location -->
+ <section class="step" data-s="1">
+  <h1>Where should we meet you?</h1>
+  <p class="lead">Search your barangay, town or city.</p>
+  <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="e.g. Libjo, Lipa, Tagaytay" autocomplete="off" enterkeyhint="search"></div>
+  <div class="list" id="locs"></div>
+  <div id="farmsg"></div>
+ </section>
+ <!-- 2 program -->
+ <section class="step" data-s="2">
+  <h1>Choose your program.</h1>
+  <p class="lead" id="proglead"></p>
+  <div id="pks"></div>
+  <p class="fine" style="text-align:left;margin-top:6px">Not sure? Refreshers are great if you already drive a little. Beginners usually choose the longest course.</p>
+ </section>
+ <!-- 3 date -->
+ <section class="step" data-s="3">
+  <h1>Pick a start date.</h1>
+  <p class="lead" id="datelead"></p>
+  <div class="cal-h"><button id="pm" aria-label="Previous month">‹</button><b id="mt"></b><button id="nm" aria-label="Next month">›</button></div>
+  <div class="cal"><div class="cal-g" id="cal"></div></div>
+  <div id="picked"></div>
+ </section>
+ <!-- 4 details -->
+ <section class="step" data-s="4">
+  <h1>Your details.</h1>
+  <p class="lead">So Coach Wel can confirm your schedule.</p>
+  <div class="f" id="f-name"><label for="name">Full name</label><input id="name" autocomplete="name" placeholder="Juan Dela Cruz" enterkeyhint="next"></div>
+  <div class="f" id="f-phone"><label for="phone">Mobile number</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0917 123 4567" enterkeyhint="next"><div class="hint">We’ll text or call to confirm. Viber &amp; WhatsApp OK.</div></div>
+  <div class="f" id="f-addr"><label for="addr">Pickup address</label><input id="addr" autocomplete="street-address" placeholder="House no., street, barangay" enterkeyhint="done"></div>
+  <p style="font-weight:600;margin:20px 0 8px 4px;font-size:14px">Is the pickup point along the highway or a main road?</p>
+  <div class="seg" id="road"></div>
+  <div style="height:14px"></div>
+  <button class="tog" id="veh"><span class="tx"><b>I need a training vehicle</b><small id="vehsub"></small></span><span class="sw"></span></button>
+ </section>
+ <!-- 5 review -->
+ <section class="step" data-s="5">
+  <h1>Review &amp; book.</h1>
+  <p class="lead">Check your details, then confirm.</p>
+  <div class="sum" id="sum1"></div>
+  <div class="sum" id="sum2"></div>
+  <div class="notice i" id="paynote"></div>
+  <p class="fine">Exclusively for licensed drivers and PDC certificate holders. Final rates may vary depending on your exact location. WelDrive PH offers private tutorials only and does not issue certificates.</p>
+ </section>
+ <!-- 6 done -->
+ <section class="step" data-s="6">
+  <div class="done">
+   <div class="big">✓</div>
+   <h1 id="dh">You’re booked in!</h1>
+   <p class="lead" id="dp"></p>
+   <div id="dcta"></div>
+  </div>
+ </section>
+ <p class="msg" id="msg"></p>
+</main>
+<div class="bar" id="bar">
+ <div class="barin">
+  <div class="tt" id="tt"><small>Total</small><b id="ttv">—</b></div>
+  <button class="go" id="go" disabled>Continue</button>
+ </div>
+</div>
+<script>
+// ===== OWNER SETTINGS =====
+const CFG={
+ script:'https://script.google.com/macros/s/AKfycbxoKFZEOx5sxiF8QqrDYTjKZkXf4LIhnCk01qUE4OyILu5yDnebjliy3e47dRTeI6jIHg/exec',
+ facebook:'https://www.facebook.com/DriveSafePHOfficial/',
+ gcash:'', gcashName:'',   // optional: GCash number & name for the deposit
+ booked:[]                 // dates NOT available, e.g. ['2026-10-20']
+};
+const ROAD_FEE=500, VEH=6500, VEH_HALF=3500;
+const BASE=[
+ {name:'2-hour lesson',st:'08:00',et:'10:00',days:1,tag:'Refresher',price:1800},
+ {name:'3-hour lesson',st:'08:00',et:'11:00',days:1,tag:'Refresher',price:2500},
+ {name:'Half-day lesson',st:'08:00',et:'12:00',days:1,tag:'Refresher',price:4500},
+ {name:'Full-day lesson',st:'08:00',et:'16:00',days:1,tag:'Refresher',price:7500},
+ {name:'2-day course',st:'08:00',et:'12:00',days:2,tag:'Best for refreshers',price:8500},
+ {name:'3-day course',st:'08:00',et:'12:00',days:3,tag:'Best for beginners',price:13000}];
+const townPk=(a,b)=>[{name:'1-day lesson',st:'08:00',et:'15:00',days:1,tag:'Refresher',price:a},{name:'2-day course',st:'08:00',et:'15:00',days:2,tag:'Best for beginners',price:b}];
+// [group, location, kind, 1-day, 2-day, deposit]  kind: base = Batangas City rates, std = Batangas City rates without 2/3-hour, town = fixed town rates
+const R=[
+['Batangas City','SM City Batangas area (Pallocan Kanluran)','base',0,0,500],
+['Batangas City','Poblacion / Downtown (Barangays 1–24)','base',0,0,500],
+['Batangas City','Alangilan','base',0,0,500],
+['Batangas City','Balagtas','base',0,0,500],
+['Batangas City','Balete','base',0,0,500],
+['Batangas City','Banaba Center','base',0,0,500],
+['Batangas City','Banaba Ibaba','base',0,0,500],
+['Batangas City','Banaba Kanluran','base',0,0,500],
+['Batangas City','Banaba Silangan','base',0,0,500],
+['Batangas City','Bilogo','base',0,0,500],
+['Batangas City','Bolbok','base',0,0,500],
+['Batangas City','Bukal','base',0,0,500],
+['Batangas City','Calicanto','base',0,0,500],
+['Batangas City','Catandala','base',0,0,500],
+['Batangas City','Concepcion','base',0,0,500],
+['Batangas City','Conde Itaas','base',0,0,500],
+['Batangas City','Conde Labac','base',0,0,500],
+['Batangas City','Cuta','base',0,0,500],
+['Batangas City','Dalig','base',0,0,500],
+['Batangas City','Dela Paz','base',0,0,500],
+['Batangas City','Dela Paz Pulot Aplaya','base',0,0,500],
+['Batangas City','Dela Paz Pulot Itaas','base',0,0,500],
+['Batangas City','Domoclay','base',0,0,500],
+['Batangas City','Dumantay','base',0,0,500],
+['Batangas City','Gulod Itaas','base',0,0,500],
+['Batangas City','Gulod Labak','base',0,0,500],
+['Batangas City','Haligue Kanluran','base',0,0,500],
+['Batangas City','Haligue Silangan','base',0,0,500],
+['Batangas City','Ilihan','base',0,0,500],
+['Batangas City','Kumba','base',0,0,500],
+['Batangas City','Kumintang Ibaba','base',0,0,500],
+['Batangas City','Kumintang Ilaya','base',0,0,500],
+['Batangas City','Libjo','base',0,0,500],
+['Batangas City','Liponpon Isla Verde','base',0,0,500],
+['Batangas City','Maapas','base',0,0,500],
+['Batangas City','Mabacong','base',0,0,500],
+['Batangas City','Mahabang Dahilig','base',0,0,500],
+['Batangas City','Mahabang Parang','base',0,0,500],
+['Batangas City','Mahacot Kanluran','base',0,0,500],
+['Batangas City','Mahacot Silangan','base',0,0,500],
+['Batangas City','Malalim','base',0,0,500],
+['Batangas City','Malibayo','base',0,0,500],
+['Batangas City','Malitam','base',0,0,500],
+['Batangas City','Maruclap','base',0,0,500],
+['Batangas City','Pagkilatan','std',0,0,500],
+['Batangas City','Paharang Kanluran','base',0,0,500],
+['Batangas City','Paharang Silangan','base',0,0,500],
+['Batangas City','Pallocan Kanluran','base',0,0,500],
+['Batangas City','Pallocan Silangan','base',0,0,500],
+['Batangas City','Pinamucan','base',0,0,500],
+['Batangas City','Pinamucan Ibaba','base',0,0,500],
+['Batangas City','Pinamucan Silangan','base',0,0,500],
+['Batangas City','Sampaga','base',0,0,500],
+['Batangas City','San Agapito Isla Verde','base',0,0,500],
+['Batangas City','San Agustin Kanluran Isla Verde','base',0,0,500],
+['Batangas City','San Agustin Silangan Isla Verde','base',0,0,500],
+['Batangas City','San Andres Isla Verde','base',0,0,500],
+['Batangas City','San Antonio Isla Verde','base',0,0,500],
+['Batangas City','San Isidro','base',0,0,500],
+['Batangas City','San Jose Sico','base',0,0,500],
+['Batangas City','San Miguel','base',0,0,500],
+['Batangas City','San Pedro','base',0,0,500],
+['Batangas City','Santa Clara','base',0,0,500],
+['Batangas City','Santa Rita Aplaya','base',0,0,500],
+['Batangas City','Santa Rita Karsada','base',0,0,500],
+['Batangas City','Santo Domingo','base',0,0,500],
+['Batangas City','Santo Niño','base',0,0,500],
+['Batangas City','Simlong','base',0,0,500],
+['Batangas City','Sirang Lupa','base',0,0,500],
+['Batangas City','Sorosoro Ibaba','base',0,0,500],
+['Batangas City','Sorosoro Ilaya','base',0,0,500],
+['Batangas City','Sorosoro Karsada','base',0,0,500],
+['Batangas City','Tabangao Ambulong','base',0,0,500],
+['Batangas City','Tabangao Aplaya','base',0,0,500],
+['Batangas City','Tabangao Dao','base',0,0,500],
+['Batangas City','Talahib Pandayan','base',0,0,500],
+['Batangas City','Talahib Payapa','base',0,0,500],
+['Batangas City','Talumpok Kanluran','base',0,0,500],
+['Batangas City','Talumpok Silangan','base',0,0,500],
+['Batangas City','Tinga Itaas','base',0,0,500],
+['Batangas City','Tinga Labak','base',0,0,500],
+['Batangas City','Tulo','base',0,0,500],
+['Batangas City','Wawa','base',0,0,500],
+['Batangas','Alitagtag','town',6800,13500,500],
+['Batangas','Balayan','town',8800,16900,500],
+['Batangas','Balete','town',7800,14900,500],
+['Batangas','Bauan','std',0,0,500],
+['Batangas','Calaca','town',7800,14800,500],
+['Batangas','Calatagan','town',8800,16800,500],
+['Batangas','Cuenca','std',0,0,500],
+['Batangas','Ibaan','std',0,0,500],
+['Batangas','Laurel','town',8800,16900,500],
+['Batangas','Lemery','town',7800,14800,500],
+['Batangas','Lian','town',8800,16900,500],
+['Batangas','Lipa City','std',0,0,500],
+['Batangas','Lobo','town',7800,14800,500],
+['Batangas','Mabini','std',0,0,500],
+['Batangas','Malvar','town',7800,14900,500],
+['Batangas','Manghinao, Bauan','std',0,0,500],
+['Batangas','Nasugbu','town',8800,16900,500],
+['Batangas','Padre Garcia','std',0,0,500],
+['Batangas','Rosario','std',0,0,500],
+['Batangas','San Jose','std',0,0,500],
+['Batangas','San Juan','town',7800,14900,500],
+['Batangas','San Nicolas','town',6800,13000,500],
+['Batangas','Sta. Teresita','town',7800,14500,500],
+['Batangas','Sto. Tomas','town',7800,14900,500],
+['Batangas','Taal','town',6800,13500,500],
+['Batangas','Talisay','town',8800,16900,500],
+['Batangas','Tanauan','town',7800,14900,500],
+['Batangas','Taysan','town',6800,13400,500],
+['Batangas','Tuy','town',7800,14800,500],
+['Laguna','Alaminos','town',8800,16900,500],
+['Laguna','Biñan','town',8800,16900,500],
+['Laguna','Cabuyao','town',8800,16900,500],
+['Laguna','Calamba','town',8800,16900,500],
+['Laguna','Canlubang','town',8800,16900,500],
+['Laguna','Los Baños','town',8800,16900,500],
+['Laguna','Pila','town',9800,18900,500],
+['Laguna','San Pablo','town',8800,16900,500],
+['Laguna','San Pedro','town',8800,16900,500],
+['Laguna','Sta. Rosa','town',8800,16900,500],
+['Laguna','Sta. Maria','town',14500,28000,500],
+['Laguna','Other Laguna area','town',8800,16800,500],
+['Cavite','Alfonso','town',9800,19900,500],
+['Cavite','Bacoor','town',9800,18800,500],
+['Cavite','Carmona','town',9800,18800,500],
+['Cavite','Cavite City','town',8800,16800,500],
+['Cavite','Dasmariñas','town',8800,16800,500],
+['Cavite','General Trias','town',9800,18800,500],
+['Cavite','Imus','town',8800,16800,500],
+['Cavite','Naic','town',9800,18800,500],
+['Cavite','Rosario','town',9800,18800,500],
+['Cavite','Silang','town',8800,16800,500],
+['Cavite','Tagaytay City','town',9800,18900,500],
+['Cavite','Tanza','town',9800,18800,500],
+['Cavite','Ternate','town',9800,18800,500],
+['Cavite','Trece Martires','town',9800,18800,500],
+['Metro Manila','Caloocan City','town',14500,28000,1000],
+['Metro Manila','Fairview, QC','town',14500,28000,1000],
+['Metro Manila','Pandacan, Manila','town',14500,28000,1000],
+['Metro Manila','Pasig City','town',14500,28000,1000],
+['Metro Manila','Quezon City','town',14500,28800,1000],
+['Metro Manila','Sampaloc, Manila','town',14500,28000,1000],
+['Metro Manila','Alabang','town',9800,18600,1000],
+['Metro Manila','BGC','town',13500,25800,1000],
+['Metro Manila','Las Piñas City','town',9800,19900,1000],
+['Metro Manila','Makati City','town',11800,23000,1000],
+['Metro Manila','Manila','town',14500,28800,1000],
+['Metro Manila','Marikina City','town',14500,28800,1000],
+['Metro Manila','Muntinlupa City','town',9800,19800,1000],
+['Metro Manila','Parañaque City','town',12800,24900,1000],
+['Metro Manila','Taguig City','town',13800,25800,1000],
+['Rizal','Angono','town',13500,26500,1000],
+['Rizal','Antipolo','town',14500,28800,1000],
+['Rizal','Binangonan','town',14500,28800,1000],
+['Rizal','Cainta','town',14500,28000,1000],
+['Rizal','San Mateo','town',13800,25800,1000],
+['Rizal','Taytay','town',14500,28000,1000],
+['Quezon','Candelaria','town',7800,14900,500],
+['Quezon','Lucena City','town',7800,14800,500],
+['Quezon','Pagbilao','town',9500,18900,500],
+['Quezon','Sariaya','town',8800,16900,500],
+['Quezon','Tayabas','town',9500,18900,500],
+['Quezon','Tiaong','town',7800,14900,500]
+];
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const key=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const addD=(k,n)=>{const d=new Date(k+'T00:00');d.setDate(d.getDate()+n);return key(d)};
+const money=n=>'₱'+Number(n).toLocaleString('en-PH');
+const fd=k=>new Date(k+'T00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+const fdl=k=>new Date(k+'T00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+const t12=t=>{const[h,m]=t.split(':').map(Number);return((h+11)%12+1)+(m?':'+String(m).padStart(2,'0'):'')+(h<12?' AM':' PM')};
+const hrs=p=>{const f=t=>{const[h,m]=t.split(':').map(Number);return h+m/60};return f(p.et)-f(p.st)};
+const today=key(new Date()),bk=new Set(CFG.booked);
+const fromFB=/FBAN|FBAV|FB_IAB|Instagram/i.test(navigator.userAgent)||/facebook\.com|fb\.me/i.test(document.referrer)||new URLSearchParams(location.search).has('fb');
+
+const S={step:0,lic:null,loc:null,pi:null,date:null,name:'',phone:'',addr:'',road:null,veh:false};
+try{const d=JSON.parse(localStorage.getItem('wd_draft')||'null');if(d){S.name=d.name||'';S.phone=d.phone||'';S.addr=d.addr||''}}catch(e){}
+const saveDraft=()=>{try{localStorage.setItem('wd_draft',JSON.stringify({name:S.name,phone:S.phone,addr:S.addr}))}catch(e){}};
+
+const area=()=>S.loc==null?null:R[S.loc];
+const pkgs=()=>{const r=area();if(!r)return[];return r[2]==='town'?townPk(r[3],r[4]):r[2]==='std'?BASE.filter(p=>hrs(p)>=4):BASE};
+const pk=()=>S.pi==null?null:pkgs()[S.pi];
+const vehRate=()=>{const r=area(),p=pk();return r&&r[2]==='base'&&p&&hrs(p)<=4?VEH_HALF:VEH};
+const bad=k=>k<=today||bk.has(k);
+const spanBad=k=>{const p=pk();return[...Array(p?p.days:1).keys()].some(i=>bad(addD(k,i)))};
+const town=()=>{const r=area();return r?(r[0]==='Batangas City'?r[1]+', Batangas City':r[1]+(r[0]==='Metro Manila'||r[0]==='Batangas City'?'':', '+r[0])):''};
+const range=()=>{const p=pk();return fd(S.date)+(p&&p.days>1?' – '+fd(addD(S.date,p.days-1)):'')};
+function calc(){
+ const r=area(),p=pk();if(!r||!p)return null;
+ const vr=vehRate(),veh=S.veh?vr*p.days:0,acc=S.road==='interior'?ROAD_FEE*p.days:0,dep=r[5],tot=p.price+veh+acc;
+ return{p,vr,veh,acc,dep,tot,bal:tot-dep};
+}
+
+// ---------- step renderers ----------
+const LIC=[['Driver\'s License (Code B)','🪪','Yes, I have a Driver’s License','Code B, student permit not included'],['PDC Certificate (Code B)','📄','Yes, I have a PDC Certificate','From an accredited driving school'],['none','🚫','Not yet','I don’t have either yet']];
+function rLic(){
+ $('#lic').innerHTML=LIC.map(([v,ic,t,s])=>`<button class="opt${S.lic===v?' on':''}" data-v="${esc(v)}"><span class="ic">${ic}</span><span class="tx"><b>${t}</b><small>${s}</small></span><span class="chk"></span></button>`).join('');
+ $('#licmsg').innerHTML=S.lic==='none'?`<div class="notice w"><b>We’d love to help you later.</b><br>WelDrive PH offers private tutorials for licensed drivers only, and we don’t issue PDC or other certificates.<br><br>Please enroll first in an accredited driving school near you. Once you have your Driver’s License or PDC Certificate (Code B), come back and book. We’ll help you build real-road confidence.<br><br><a href="${CFG.facebook}">Follow us on Facebook</a> for free driving tips.</div>`:'';
+}
+let showAll=false;
+function rLocs(){
+ const q=$('#q').value.trim().toLowerCase();
+ const hit=R.map((r,i)=>({r,i})).filter(({r})=>!q||(r[1]+' '+r[0]).toLowerCase().includes(q));
+ let list=hit;const cap=q||showAll?999:12;
+ if(!q&&!showAll)list=hit.filter(({r})=>/SM City|Poblacion|^Lipa|Bauan$|Tanauan|Sto\. Tomas|Calamba|Tagaytay|Lucena|Alangilan|Kumintang Ibaba|Balagtas/.test(r[1])).slice(0,cap);
+ let h='',g='';
+ list.forEach(({r,i})=>{if(r[0]!==g){g=r[0];h+=`<div class="grp">${esc(g)}</div>`}
+  const from=r[2]==='town'?'from '+money(r[3]):r[2]==='std'?'from '+money(4500):'from '+money(BASE[0].price);
+  h+=`<button class="row${S.loc===i?' on':''}" data-i="${i}"><span>${esc(r[1])}</span><small>${from}</small></button>`});
+ if(!list.length)h=`<div class="empty">No match for “${esc(q)}”.</div>`;
+ if(!q&&!showAll)h+=`<button class="more" id="showall">Show all ${R.length} locations</button>`;
+ h+=`<button class="row" data-i="far" style="color:var(--mut)"><span>My area isn’t listed</span><small>›</small></button>`;
+ $('#locs').innerHTML=h;
+}
+function rPks(){
+ const r=area(),ps=pkgs();
+ $('#proglead').textContent=town()+' rates. 8 AM start, at your pickup point.';
+ const best=ps.length>2?2:ps.length-1;
+ $('#pks').innerHTML=ps.map((p,i)=>`<button class="opt${S.pi===i?' on':''}" data-i="${i}"><span class="tx"><b>${p.name}${i===best?'<span class="badge">Popular</span>':''}</b><small>${p.days>1?p.days+' days · ':''}${t12(p.st)} – ${t12(p.et)}${p.days>1?' daily':''} · ${p.tag}</small></span><span class="pr">${money(p.price)}${p.days>1?`<small>${money(Math.round(p.price/p.days))}/day</small>`:''}</span></button>`).join('');
+}
+let view=new Date();view.setDate(1);
+function rCal(){
+ const p=pk(),y=view.getFullYear(),m=view.getMonth(),first=view.getDay(),n=new Date(y,m+1,0).getDate();
+ $('#datelead').textContent=p.days>1?`Your ${p.days}-day course runs on ${p.days} days in a row.`:'Lessons start at '+t12(p.st)+'.';
+ $('#mt').textContent=view.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+ const now=new Date();$('#pm').disabled=y<now.getFullYear()||(y===now.getFullYear()&&m<=now.getMonth());
+ let h=['S','M','T','W','T','F','S'].map(d=>`<div class="wd">${d}</div>`).join('');
+ for(let i=0;i<first;i++)h+='<div></div>';
+ for(let d=1;d<=n;d++){const k=key(new Date(y,m,d)),inR=S.date&&k>S.date&&k<=addD(S.date,p.days-1);
+  h+=`<button class="d${k===S.date?' sel':inR?' rng':''}${k===today?' tdy':''}" data-k="${k}"${spanBad(k)?' disabled':''} aria-label="${fdl(k)}">${d}</button>`}
+ $('#cal').innerHTML=h;
+ $('#picked').innerHTML=S.date?`<div class="picked"><span class="ic">📅</span><div><b>${range()}</b><span>${t12(p.st)} – ${t12(p.et)}${p.days>1?' each day':''}</span></div></div>`:'';
+}
+function rDetails(){
+ $('#name').value=S.name;$('#phone').value=S.phone;$('#addr').value=S.addr;
+ $('#road').innerHTML=[['main','Yes','Highway or main road'],['interior','No','Interior · +'+money(ROAD_FEE)+'/session']].map(([v,t,s])=>`<button class="opt${S.road===v?' on':''}" data-v="${v}"><b>${t}</b><small>${s}</small></button>`).join('');
+ $('#veh').classList.toggle('on',S.veh);
+ $('#vehsub').textContent='+'+money(vehRate())+' per session · advance booking required';
+}
+function rReview(){
+ const c=calc(),p=c.p;
+ $('#sum1').innerHTML=[
+  ['Program',p.name,2],['Date',range()+'<br><span style="font-weight:400;color:var(--mut)">'+t12(p.st)+' – '+t12(p.et)+(p.days>1?' daily':'')+'</span>',3],
+  ['Location',esc(town()),1],['Pickup',esc(S.addr),4],['Name',esc(S.name),4],['Mobile',esc(S.phone),4]
+ ].map(([k,v,s])=>`<div class="r"><span>${k}</span><b>${v}<button class="ed" data-go="${s}">Edit</button></b></div>`).join('');
+ $('#sum2').innerHTML=`<div class="r"><span>${p.name}</span><b>${money(p.price)}</b></div>`+
+  (c.veh?`<div class="r"><span>Training vehicle (${p.days} × ${money(c.vr)})</span><b>${money(c.veh)}</b></div>`:'')+
+  (c.acc?`<div class="r"><span>Interior location fee (${p.days} × ${money(ROAD_FEE)})</span><b>${money(c.acc)}</b></div>`:'')+
+  `<div class="r tot"><span>Total</span><b>${money(c.tot)}</b></div><div class="r dep"><span>Reservation deposit</span><b>${money(c.dep)}</b></div><div class="r"><span>Balance on lesson day</span><b>${money(c.bal)}</b></div>`;
+ $('#paynote').innerHTML=CFG.gcash?`<b>Secure your slot:</b> send the ${money(c.dep)} deposit via GCash to <b>${esc(CFG.gcash)}</b>${CFG.gcashName?' ('+esc(CFG.gcashName)+')':''} after booking.`:`<b>No payment now.</b> Coach Wel will message you to confirm and send details for the ${money(c.dep)} reservation deposit. Your slot is reserved once it’s paid.`;
+}
+
+// ---------- flow ----------
+const TOTAL=5;
+const valid=s=>s===0?!!S.lic&&S.lic!=='none':s===1?S.loc!=null:s===2?S.pi!=null:s===3?!!S.date:true;
+function phoneOk(){return /^(\+?63|0)9\d{9}$/.test(S.phone.replace(/[\s-]/g,''))}
+function stepValid(s){if(s===4)return S.name.trim().length>1&&phoneOk()&&S.addr.trim().length>3&&!!S.road;return valid(s)}
+function render(){
+ document.querySelectorAll('.step').forEach(el=>el.classList.toggle('on',+el.dataset.s===S.step));
+ const st=S.step;
+ $('#back').hidden=st===0||st===6;
+ $('#stepn').textContent=st>0&&st<6?`Step ${st} of ${TOTAL}`:'';
+ $('#prog').style.width=(st>=6?100:st/TOTAL*100)+'%';
+ if(st===0)rLic();if(st===1)rLocs();if(st===2)rPks();if(st===3)rCal();if(st===4)rDetails();if(st===5)rReview();
+ const c=calc();$('#ttv').textContent=c?money(c.tot):'—';
+ $('#tt').style.visibility=c?'visible':'hidden';
+ const go=$('#go');
+ $('#bar').style.display=st===6||(st===1&&S.loc==null)?'none':'';
+ go.textContent=st===5?'Confirm booking':'Continue';
+ go.classList.toggle('full',!c);
+ go.disabled=!stepValid(st);
+ $('#msg').textContent='';
+}
+function to(s){S.step=s;render();window.scrollTo({top:0,behavior:'instant'in window?'instant':'auto'})}
+function next(){if(S.step===5)return submit();if(stepValid(S.step))to(S.step+1)}
+
+$('#back').onclick=()=>to(Math.max(0,S.step-1));
+$('#go').onclick=next;
+$('#lic').onclick=e=>{const b=e.target.closest('.opt');if(!b)return;S.lic=b.dataset.v;render();if(S.lic!=='none')setTimeout(()=>to(1),180)};
+$('#q').oninput=rLocs;
+$('#locs').onclick=e=>{
+ if(e.target.closest('#showall')){showAll=true;rLocs();return}
+ const b=e.target.closest('.row');if(!b)return;
+ if(b.dataset.i==='far'){S.loc=null;$('#farmsg').innerHTML=`<div class="notice w">Thank you for your interest! At the moment your location is outside our current service area, so we can’t accommodate it yet. We hope to reach your area soon. Message us on <a href="${CFG.facebook}">Facebook</a> if you’re nearby. We may still be able to help.</div>`;render();return}
+ $('#farmsg').innerHTML='';
+ const i=+b.dataset.i;if(S.loc!==i){S.pi=null;S.date=null}S.loc=i;render();setTimeout(()=>to(2),160);
+};
+$('#pks').onclick=e=>{const b=e.target.closest('.opt');if(!b)return;const i=+b.dataset.i;if(S.pi!==i){S.pi=i;if(S.date&&spanBad(S.date))S.date=null}render();setTimeout(()=>to(3),160)};
+$('#pm').onclick=()=>{view.setMonth(view.getMonth()-1);rCal()};
+$('#nm').onclick=()=>{view.setMonth(view.getMonth()+1);rCal()};
+$('#cal').onclick=e=>{const b=e.target.closest('.d');if(!b||b.disabled)return;S.date=b.dataset.k;rCal();render()};
+['name','phone','addr'].forEach(id=>{const el=$('#'+id);el.oninput=()=>{S[id]=el.value;saveDraft();$('#f-'+id).classList.remove('bad');$('#go').disabled=!stepValid(4)};
+ el.onblur=()=>{const okv=id==='phone'?phoneOk()||!S.phone:id==='name'?S.name.trim().length>1||!S.name:S.addr.trim().length>3||!S.addr;$('#f-'+id).classList.toggle('bad',!okv)};
+ el.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();const o={name:'phone',phone:'addr',addr:null}[id];o?$('#'+o).focus():el.blur()}}});
+$('#road').onclick=e=>{const b=e.target.closest('.opt');if(!b)return;S.road=b.dataset.v;rDetails();render()};
+$('#veh').onclick=()=>{S.veh=!S.veh;rDetails();render()};
+$('#sum1').onclick=e=>{const b=e.target.closest('.ed');if(b)to(+b.dataset.go)};
+
+let sending=false;
+function submit(){
+ if(sending)return;const c=calc(),p=c.p;
+ if(!stepValid(4))return to(4);
+ sending=true;const go=$('#go');go.disabled=true;go.textContent='Booking…';
+ const m=['WELDRIVE PH – BOOKING REQUEST','',
+  'Name: '+S.name.trim(),'Mobile: '+S.phone.trim(),'License: '+S.lic,'',
+  'Program: '+p.name+' ('+p.tag+')','Schedule: '+range()+', '+t12(p.st)+' – '+t12(p.et)+(p.days>1?' daily':''),
+  'Location: '+town(),'Pickup address: '+S.addr.trim(),'Road access: '+(S.road==='interior'?'Interior / off-highway':'Along the highway / main road'),'Vehicle: '+(S.veh?'Training vehicle':'Own vehicle'),'',
+  'Program fee: '+money(p.price),c.veh?'Training vehicle: '+money(c.veh):null,c.acc?'Interior location fee: '+money(c.acc):null,
+  'Total: '+money(c.tot),'Reservation deposit: '+money(c.dep)+' (payment details to be sent)','Balance due on lesson day: '+money(c.bal),'',
+  'Booked via: '+(fromFB?'Facebook link':'weldrive.ph')].filter(x=>x!==null).join('\n');
+ const url=CFG.script+'?'+new URLSearchParams({name:S.name.trim(),phone:S.phone.trim(),town:town(),start:S.date,days:p.days,st:p.st,et:p.et,addr:S.addr.trim(),message:m});
+ const done=()=>{
+  $('#dh').textContent='You’re booked in, '+S.name.trim().split(' ')[0]+'!';
+  $('#dp').innerHTML=`${esc(p.name)} · ${range()}<br>${t12(p.st)} at ${esc(town())}<br><br>Coach Wel will contact you at <b>${esc(S.phone.trim())}</b> to confirm and send the ${money(c.dep)} deposit details.`;
+  if(fromFB){let n=5;$('#dcta').innerHTML=`<p class="fine" style="font-size:14px">Returning to Facebook in <b id="cd">5</b>…</p><a class="btnl" href="${CFG.facebook}">Back to Facebook now</a>`;
+   const t=setInterval(()=>{n--;const el=$('#cd');if(el)el.textContent=n;if(n<=0){clearInterval(t);location.href=CFG.facebook}},1000)}
+  else $('#dcta').innerHTML=`<a class="btnl" href="/">Back to home</a><br><a class="btnl s" href="${CFG.facebook}" style="margin-top:10px">Follow us on Facebook</a>`;
+  to(6);
+ };
+ fetch(url,{mode:'no-cors',keepalive:true}).then(done).catch(()=>{location.href=url});
+}
+render();
+</script>
+</body></html>
