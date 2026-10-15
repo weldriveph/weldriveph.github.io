@@ -515,3 +515,29 @@ $('#area').onchange=gate;
 renderAll();
 document.getElementById('yr').textContent=new Date().getFullYear();
 </script></body></html>
+<script>
+// ===== Facebook quick-booking mode (book.weldrive.ph -> weldrive.ph/?fb=1) =====
+(function(){
+ if(!new URLSearchParams(location.search).has('fb'))return;
+ var FB='https://www.facebook.com/DriveSafePHOfficial/';
+ var st=document.createElement('style');
+ st.textContent='.section,.hero-btns,.nav-links a:not(.cta),.trust,footer{display:none!important}.hero{padding:28px 0 18px}.hero h1{font-size:34px}';
+ document.head.appendChild(st);
+ var h=document.querySelector('.hero h1');if(h)h.innerHTML='Book your driving lesson.';
+ var s=document.querySelector('.hero .sub');if(s)s.textContent='Takes about a minute. You’ll go straight back to Facebook when you’re done.';
+ var b=document.getElementById('book'),orig=b.onclick;
+ b.removeAttribute('target');b.textContent='Book now';
+ b.onclick=function(ev){
+  var was=!!b.dataset.sent;orig(ev);
+  if(was||!b.dataset.sent)return;
+  ev.preventDefault();var url=b.href;
+  var oh=document.getElementById('oh'),op=document.getElementById('op');
+  oh.textContent='Sending your booking…';
+  fetch(url,{mode:'no-cors',keepalive:true}).then(function(){
+   oh.textContent='✅ Booking request sent!';
+   var n=5;op.innerHTML=op.textContent+'<br><br><b>Returning to Facebook in <span id="cd">5</span>…</b><br><a class="btn2 p" style="margin-top:14px" href="'+FB+'">Back to Facebook now</a>';
+   var t=setInterval(function(){n--;var c=document.getElementById('cd');if(c)c.textContent=n;if(n<=0){clearInterval(t);location.href=FB}},1000);
+  }).catch(function(){location.href=url});
+ };
+})();
+</script>
