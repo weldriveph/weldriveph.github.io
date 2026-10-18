@@ -112,13 +112,22 @@ input:focus,select:focus{box-shadow:0 0 0 4px color-mix(in srgb,var(--acc) 30%,t
 .contact .k{font-size:13px;color:var(--mut);margin-bottom:4px}.contact .v{font-size:18px;font-weight:600;word-break:break-word}
 footer{margin-top:40px;border-top:.5px solid var(--line);padding:24px 16px 40px;text-align:center;color:var(--mut);font-size:13px}
 footer a{color:var(--mut)}
+
+.rv{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0 0}
+.rv .card{margin:0;display:flex;flex-direction:column;justify-content:space-between}
+.rv .tg{display:inline-block;color:var(--acc);background:var(--soft);font-size:12px;font-weight:600;padding:4px 10px;border-radius:980px;margin-bottom:14px}
+.rv p{margin:0 0 18px;font-size:16px;line-height:1.55}
+.rv .nm{padding-top:14px;border-top:1px solid var(--line);font-size:14px;font-weight:600}
+.rv .nm small{display:block;color:var(--mut);font-weight:400;font-size:12px}
+.rv-more{text-align:center;margin:28px 0 0}
+@media(max-width:760px){.rv{grid-template-columns:1fr}}
 </style></head>
 <body>
-<nav class="bar"><a class="brand" href="#top">WelDrive PH</a><div class="nav-links"><a href="#programs">Programs</a><a href="#about">About</a><a href="#contact">Contact</a><a class="cta" href="/book/">Book now</a></div></nav>
+<nav class="bar"><a class="brand" href="#top">WelDrive PH</a><div class="nav-links"><a href="#programs">Programs</a><a href="#about">About</a><a href="/reviews/">Reviews</a><a href="#contact">Contact</a><a class="cta" href="/book/">Book now</a></div></nav>
 <div class="wrap">
 <div class="hero" id="top">
  <h1>Private driving lessons,<br>at your location.</h1>
- <p class="sub">Premium one-on-one coaching for licensed drivers and PDC holders. Our Batangas-based instructor comes to you.</p>
+ <p class="sub">Premium one-on-one coaching for licensed drivers and PDC Certificate (Code B) holders. Our Batangas-based instructor comes to you.</p>
  <div class="trust"><span>Experienced instructor</span><span>Flexible schedules</span><span>Your car or ours</span></div>
  <div class="hero-btns"><a class="btn2 p" href="/book/">Book a lesson</a><a class="btn2 s" href="#programs">See programs</a></div>
 </div>
@@ -148,7 +157,7 @@ footer a{color:var(--mut)}
    <li>Zigzag roads, uphill &amp; downhill techniques</li>
    <li>Safe lane changing, following distance &amp; overtaking <small>(TLSL)</small></li>
    <li>Defensive driving for everyday road safety <small>(SIPDE)</small></li>
-   <li>Exclusively for licensed drivers &amp; PDC certificate holders</li>
+   <li>Exclusively for licensed drivers &amp; PDC Certificate (Code B) holders</li>
   </ul>
  </div>
 </section>
@@ -157,7 +166,7 @@ footer a{color:var(--mut)}
   <div>
    <p class="eyebrow">About</p>
    <h2 style="font-size:36px">Meet Coach Wel.</h2>
-   <p class="empty" style="font-size:17px">WelDrive PH (HomebaseDriving by Coach Wel) offers private driving tutorials from Batangas City. Coach Wel helps licensed drivers and PDC holders build real-road skills, road awareness and the confidence to drive on their own.</p>
+   <p class="empty" style="font-size:17px">WelDrive PH (HomebaseDriving by Coach Wel) offers private driving tutorials from Batangas City. Coach Wel helps licensed drivers and PDC Certificate (Code B) holders build real-road skills, road awareness and the confidence to drive on their own.</p>
    <p class="empty" style="font-size:15px">We provide private tutorials only and do not issue PDC certificates or other certifications.</p>
    <div class="stat"><div><b>935K+</b><span>Facebook followers</span></div><div><b>1-on-1</b><span>Private coaching</span></div><div><b>100+</b><span>Service locations</span></div></div>
   </div>
@@ -168,6 +177,17 @@ footer a{color:var(--mut)}
   </div>
  </div>
 </section>
+<section class="section" id="reviews">
+ <h2>Loved by our students.</h2>
+ <p class="sub">100% recommend · 96 reviews sa Facebook</p>
+ <div class="rv">
+  <div class="card"><div><span class="tg">✓ Recommends</span><p>“Napaka-patient at magaling magturo ni Sir Wel. As a first-time driver, unti-unting nawala ang kaba ko sa kalsada at napalitan ng confidence sa pagmamaneho.”</p></div><div class="nm">Pau O.<small>Facebook review</small></div></div>
+  <div class="card"><div><span class="tg">✓ Recommends</span><p>“Thank you for making me feel confident now sa pag park at drive sa busy and narrow roads! Highly recommended!”</p></div><div class="nm">Precious S.<small>Facebook review</small></div></div>
+  <div class="card"><div><span class="tg">✓ Recommends</span><p>“Sir Wel has helped me gain confidence as a new driver. His ways of teaching are superb and one of a kind. Highly recommended.”</p></div><div class="nm">Joanne B.<small>Facebook review</small></div></div>
+ </div>
+ <p class="rv-more"><a class="btn2 s" href="/reviews/">Read all reviews</a></p>
+</section>
+
 <section class="section" id="contact">
  <h2>Get in touch.</h2>
  <p class="sub">Open for bookings, collaborations and partnerships.</p>
