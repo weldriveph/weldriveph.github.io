@@ -549,6 +549,8 @@ function submit(){
  };
  fetch(url,{mode:'no-cors',keepalive:true}).then(done).catch(()=>{location.href=url});
 }
+// Apple Calendar sync: book/busy.json lists booked days (dates only). A GitHub Action updates it every 15 minutes.
+(async()=>{for(const u of['https://raw.githubusercontent.com/weldriveph/weldriveph.github.io/main/book/busy.json','/book/busy.json']){try{const r=await fetch(u+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)continue;const j=await r.json();(j.busy||[]).forEach(k=>bk.add(k));if(S.date&&spanBad(S.date)){S.date=null;if(S.step>3)S.step=3}if(S.step===3)render();return}catch(e){}}})();
 render();
 </script>
 </body></html>
