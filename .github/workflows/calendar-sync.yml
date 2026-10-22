@@ -1,0 +1,40 @@
+# Copies booked days from Apple Calendar into book/busy.json so the booking
+# page (weldrive.ph/book) blocks them. Runs every 15 minutes, or on demand
+# from the Actions tab ("Run workflow").
+# Setup: put the iCloud "Public Calendar" link(s) in the repository secret
+# APPLE_CALENDARS, one link per line. Only dates are saved, never details.
+name: Sync Apple Calendar
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apple-calendar-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Read Apple Calendar
+        env:
+          APPLE_CALENDARS: ${{ secrets.APPLE_CALENDARS }}
+        run: python3 .github/scripts/calendar_sync.py
+
+      - name: Save booked dates
+        run: |
+          git add book/busy.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "No change to save."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Update booked dates from Apple Calendar"
+          git pull -q --rebase origin main
+          git push -q origin HEAD:main
